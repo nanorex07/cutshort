@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block navbarItems %}
+
+<a class="nav-item nav-link" id="home" href="/">Home</a>
+<a class="nav-item nav-link" id="logout" href="/logout">LogOut</a>
+
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <h2 class="display-4">Welcome, {{ user[1] }}</h1>
+        <p class="lead">Enter the url below, and click the button. cheers!</p>
+        <form method="POST">
+            <div class="input-group">
+                <button class="btn btn-dark" type="submit" id="button-addon1">Shorten</button>
+                <input type="url" class="form-control" id="url" name="url" placeholder="enter url..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+    
+            {% if curr_code %}
+            <div class="input-group" style="margin-top: 1%;">
+                <input type="text" id="new_url" class="form-control" aria-label="Example text with button addon" placeholder="{{base_url + curr_code}}" aria-describedby="button-addon1" readonly>
+                <button class="btn btn-success" type="button" id="button-addon1" onclick="copyToClip()">Copy!</button>
+            </div>
+            {% endif %}
+        </form>
+</div>
+{% if all_urls|length == 0 %}
+<blockquote class="text-center blockquote">You dont have any urls</blockquote>
+{% else %}
+<ul class="list-group justify-content-center" >
+    {% for url in all_urls %}
+
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="{{ base_url + url[2] }}">{{ base_url + url[2] }}</a>
+        <span class="badge badge-primary badge-pill" >{{ url[4] }}</span>
+        <button class="btn btn-danger" type="button" onclick="deleteUrl('{{ url[2] }}')">Delete</button>
+    </li>
+    {% endfor %}
+{% endif %}
+</ul>
+
+
+{% endblock %}

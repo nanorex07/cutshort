@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block navbarItems %}
+            
+<a class="nav-item nav-link" id="Login" href="/login">Login</a>
+<a class="nav-item nav-link" id="Register" href="/register">Register</a>
+            
+{% endblock %}
+{% block title %}CutShort{% endblock %}
+{% block content %}<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Cut Short</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Very basic url shortner app made using flask framework in python. UI is made using bootstrap-5. Register and login to use the app.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="https://github.com/nanorex07/CutShort"><button type="button" class="btn btn-outline-primary btn-lg px-4 me-sm-3">Github Repo</button></a>
+        <a href="https://www.linkedin.com/in/namah-jain-5188161b4" >
+        <button type="button" class="btn btn-outline-success btn-lg px-4">Developer LinkedIn</button>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
